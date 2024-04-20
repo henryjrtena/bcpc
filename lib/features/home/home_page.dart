@@ -18,7 +18,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const AppDrawer(),
-      appBar: AppBar(backgroundColor: blue),
+      appBar: AppBar(
+        backgroundColor: blue,
+        iconTheme: const IconThemeData(color: white),
+      ),
       backgroundColor: white,
       body: SingleChildScrollView(
         child: Column(

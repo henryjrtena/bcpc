@@ -1,9 +1,10 @@
 import 'package:brgy_abella/utilities/constant.dart';
 import 'package:brgy_abella/widgets/drawer.dart';
-import 'package:brgy_abella/widgets/dropdown.dart';
+import 'package:brgy_abella/widgets/sex.dart';
 import 'package:brgy_abella/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:date_picker_plus/date_picker_plus.dart';
 
 class InsertPage extends StatefulWidget {
   const InsertPage({super.key});
@@ -17,6 +18,8 @@ class _InsertPageState extends State<InsertPage> {
   final middleName = TextEditingController();
   final lastname = TextEditingController();
   final ageController = TextEditingController();
+
+  String birthdate = "Birthday";
 
   List<DateTime?> dates = [DateTime.now()];
 
@@ -66,13 +69,30 @@ class _InsertPageState extends State<InsertPage> {
                   ),
                 ),
                 const Gap(5.0),
-                AppYesNoDropDown(
-                  label: 'Kapangit',
-                  initialValue: 1,
+                SexDropDown(
+                  label: "Sex",
+                  initialValue: -1,
                   onChanged: (int value) {},
-                )
+                ),
               ],
             ),
+            Row(
+              children: [
+                OutlinedButton(
+                    onPressed: () async {
+                      final date = await showDatePickerDialog(
+                        context: context,
+                        minDate: DateTime(2021, 1, 1),
+                        maxDate: DateTime(2023, 12, 31),
+                      );
+
+                      setState(() {
+                        birthdate = date.toString();
+                      });
+                    },
+                    child: Text(birthdate))
+              ],
+            )
             // AppTextField(
             //   controller: nameController,
             //   hintText: 'Birthdate',
