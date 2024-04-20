@@ -1,3 +1,4 @@
+// ignore_for_file: invalid_annotation_target
 import 'package:brgy_abella/utilities/constant.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
